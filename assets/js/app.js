@@ -20,7 +20,14 @@ new Vue({
                     scene: 2,
                     step: 0,
                     done: false,
-                    naration: "",
+                    naration: "Suatu ketika, salah satu buah ara hanyut terbawa arus sungai. Buah itu tersangkut di jala dan aromanya yang kuat menarik perhatian orang-orang di sekitar sungai.",
+                    img: ""
+                },
+                {
+                    scene: 3,
+                    step: 0,
+                    done: false,
+                    naration: "Scene 3",
                     img: ""
                 }
             ]
@@ -56,6 +63,7 @@ new Vue({
             });
             vm.swiper.on('slideChangeTransitionEnd', () => {
                 vm.activeScene = vm.swiper.activeIndex
+                if(vm.activeScene == 1) vm.simulateScene2() // scene 2
             });
         },
         slide(dir) {
@@ -78,6 +86,16 @@ new Vue({
                 }
             }
         },
+        simulateScene2() {
+            const vm = this
+            const scene2Interval = setInterval(() => {
+                if(vm.gameStep[1].step == 2) { 
+                    clearInterval(scene2Interval) 
+                    vm.allowSlide = true
+                }
+                vm.gameStep[1].step++
+            }, 2800)
+        }
     },
     mounted() {
         this.initSwiper()

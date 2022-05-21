@@ -27,7 +27,13 @@
                                 <div class="panel scene__1--panel2" v-if="gameStep[0].step == 2">“Jangan sampai ada buah yang jatuh ke sungai.”</div>
                             </div>
                         </div>
-                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__2--1 hide" :class="{ 'show': gameStep[1].step >= 0 }" ></div>
+                                <div class="full scene__2--2 hide" :class="{ 'show': gameStep[1].step >= 1 }" ></div>
+                                <div class="full scene__2--3 hide" :class="{ 'show': gameStep[1].step >= 2 }" ></div>
+                            </div>
+                        </div>
                         <div class="swiper-slide">Slide 3</div>
                     </div>
                     <div class="naration">
