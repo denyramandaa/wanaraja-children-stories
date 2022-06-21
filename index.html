@@ -33,7 +33,7 @@
 </head>
 <body>
     <div class="container" id="app">
-        <audio v-for="(item, key) in audioAssets" class="audio" :class="item.type" :src="item.src" :id="item.id" muted></audio>
+        <audio v-for="(item, key) in audioAssets" class="audio" :class="item.type" :src="item.src" :id="item.id" muted preload="auto"></audio>
         <div class="wrapper">
             <div class="inner">
                 <div class="swiper">
