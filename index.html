@@ -4,16 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanarja Story</title>
+    <title>Wanaraja Story</title>
+    <meta name="description" property="og:description" content="Wanaraja, kisah seorang Raja yang menjadi lebih baik setelah melihat sikap seekor Monyet yang berkorban untuk rakyatnya." />
+    <meta name="keywords" content="Wanaraja, itb, buku anak">
+    <meta name="news_keywords" content="Wanaraja, itb, buku anak">
+    <meta name="geo.country" content="id" />
+    <meta http-equiv="content-language" content="In-Id" />
+    <meta name="geo.placename" content="Indonesia" />
+    <meta name="theme-color" content="#6F5749" />
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <meta property="fb:app_id" content="1806379142939079" />
+    <meta property="og:title" name="title" content="Wanaraja Story" />
+    <meta property="og:image" content="assets/img/cover.jpg" />
+    <meta property="og:site_name" content="Wanaraja Story" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://wanaraja-story.netlify.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@arindjo" />
+    <meta name="twitter:description" content="Wanaraja, kisah seorang Raja yang menjadi lebih baik setelah melihat sikap seekor Monyet yang berkorban untuk rakyatnya." />
+    <meta name="twitter:image" content="assets/img/cover.jpg" />
+    <meta name="twitter:site" content="@arindjo" />
+    <meta name="twitter:title" content="Wanaraja Story" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.1.4/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
     <div class="container" id="app">
+        <audio v-for="(item, key) in audioAssets" class="audio" :class="item.type" :src="item.src" :id="item.id" muted></audio>
         <div class="wrapper">
             <div class="inner">
                 <div class="swiper">
@@ -21,10 +41,14 @@
                         <div class="swiper-slide">
                             <div class="scene">
                                 <div class="full scene__1--bg"></div>
-                                <div class="left-balon scene__1--bt1" v-if="gameStep[0].step == 0" @click="gameStep[0].step++"></div>
-                                <div class="right-balon scene__1--bt2" v-if="gameStep[0].step == 1" @click="gameStep[0].step++, allowSlide = true"></div>
-                                <div class="panel scene__1--panel1" v-if="gameStep[0].step == 1">“Sungguh harum dan enak buah di pohon ini!”</div>
-                                <div class="panel scene__1--panel2" v-if="gameStep[0].step == 2">“Jangan sampai ada buah yang jatuh ke sungai.”</div>
+                                <div class="left-balon scene__1--bt1" v-if="gameStep[0].step == 0" @click="gameStep[0].step++, playClickAudio(), playAudioNaration('karakter0')"></div>
+                                <div class="right-balon scene__1--bt2" v-if="gameStep[0].step == 1" @click="gameStep[0].step++, playClickAudio(), playAudioNaration('karakter1')"></div>
+                                <div class="right-balon scene__1--bt3" v-if="gameStep[0].step == 2" @click="gameStep[0].step++, playClickAudio(), playAudioNaration('karakter2')"></div>
+                                <div class="right-balon scene__1--bt4" v-if="gameStep[0].step == 3" @click="gameStep[0].step++, playClickAudio(), playAudioNaration('karakter3'), allowSlide = true"></div>
+                                <div class="panel scene__1--panel1" v-if="gameStep[0].step == 1">“Jangan sampai para manusia mengetahui buah ini. Mereka pasti akan merebutnya dari kita.”</div>
+                                <div class="panel scene__1--panel2" v-if="gameStep[0].step == 2">“Jaga baik-baik agar tidak ada buah yang hanyut ke sungai.”</div>
+                                <div class="panel scene__1--panel3" v-if="gameStep[0].step == 3">“Ayo kita bungkus buah ini.”</div>
+                                <div class="panel scene__1--panel4" v-if="gameStep[0].step == 4">“Kita potong juga dahannya, agar tidak menjulur ke sungai.”</div>
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -34,7 +58,59 @@
                                 <div class="full scene__2--3 hide" :class="{ 'show': gameStep[1].step >= 2 }" ></div>
                             </div>
                         </div>
-                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__3--bg"></div>
+                                <div class="right-balon scene__3--bt1" v-if="gameStep[2].step == 0" @click="gameStep[2].step++, playClickAudio(), playAudioNaration('karakter5')"></div>
+                                <div class="right-balon scene__3--bt2" v-if="gameStep[2].step == 1" @click="gameStep[2].step++, playClickAudio(), allowSlide = true, playAudioNaration('karakter6')"></div>
+                                <div class="panel scene__3--panel1" v-if="gameStep[2].step == 1">“Terimalah persembahan kami, Raja.”</div>
+                                <div class="panel scene__3--panel2" v-if="gameStep[2].step == 2">“Kalian harus mencari di mana letak pohon buah ini.”</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__4--bg"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__5--bg"></div>
+                                <div class="left-balon scene__5--bt1" v-if="gameStep[4].step == 0" @click="gameStep[4].step++, playClickAudio(), playAudioNaration('karakter7')"></div>
+                                <div class="right-balon scene__5--bt2" v-if="gameStep[4].step == 1" @click="gameStep[4].step++, playClickAudio(), allowSlide = true, playAudioNaration('karakter8')"></div>
+                                <div class="panel scene__5--panel1" v-if="gameStep[4].step == 1">“Itu pohonnya! Usir monyet-monyet itu!”</div>
+                                <div class="panel scene__5--panel2" v-if="gameStep[4].step == 2">“Hus.. hus.. pergi kalian monyet! Ini pohon raja kami.”</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__6--bg"></div>
+                                <div class="right-balon scene__6--bt1" v-if="gameStep[5].step == 0" @click="gameStep[5].step++, playClickAudio(), allowSlide = true, playAudioNaration('karakter9')"></div>
+                                <div class="panel scene__6--panel1" v-if="gameStep[5].step == 1">“Ayo semuanya, cepat menyeberang!”</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__7--bg"></div>
+                                <div class="left-balon scene__7--bt1" v-if="gameStep[6].step == 0" @click="gameStep[6].step++, playClickAudio(), playAudioNaration('karakter10')"></div>
+                                <div class="right-balon scene__7--bt2" v-if="gameStep[6].step == 1" @click="gameStep[6].step++, playClickAudio(), playAudioNaration('karakter11')"></div>
+                                <div class="left-balon scene__7--bt3" v-if="gameStep[6].step == 2" @click="gameStep[6].step++, playClickAudio()"></div>
+                                <div class="left-balon scene__7--bt4" v-if="gameStep[6].step == 3" @click="gameStep[6].step++, playClickAudio(), allowSlide = true"></div>
+                                <div class="panel scene__7--panel1" v-if="gameStep[6].step == 1">“Mengapa kamu mengorbankan dirimu untuk mereka?”</div>
+                                <div class="panel scene__7--panel2" v-if="gameStep[6].step == 2">“Aku adalah raja dan pemimpin mereka..”</div>
+                                <div class="panel scene__7--panel3" v-if="gameStep[6].step == 3">“Kebahagiaan mereka adalah kebahagiaanku.”</div>
+                                <div class="panel scene__7--panel4" v-if="gameStep[6].step == 4">“Aku tidak takut untuk berjuang demi mereka.”</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__8--bg"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__9--bg"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="naration">
                         <div class="naration__inner">
@@ -48,7 +124,7 @@
                     <div class="navigation__container">
                         <div class="navigation__inner">
                             <div class="navigation__list" v-for="(obj, key) in gameStep">
-                                <div class="navigation__list--img" :style="{ backgroundImage: 'url(' + obj.img + ')' }"></div>
+                                <div class="navigation__list--img" :style="{ backgroundImage: 'url(' + obj.img + ')' }" @click="slideTo(key), navigationIsOpen = false"></div>
                                 <div class="navigation__list--number">{{ obj.scene }}</div>
                             </div>
                         </div>
@@ -66,6 +142,9 @@
                         </div>
                     </div>
                 </transition>
+                <div class="soundSetting" :class="{ 'off' : !soundIsOn }" @click="soundIsOn = !soundIsOn">
+                    <img src="assets/img/button-sound-on.png" alt="icon sound">
+                </div>
             </div>
         </div>
         <div id="error" v-if="orientationError">

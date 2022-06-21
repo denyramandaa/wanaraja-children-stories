@@ -8,27 +8,194 @@ new Vue({
             allowSlide: false,
             orientationError: false,
             navigationIsOpen: false,
+            soundIsOn: true,
             gameStep: [
                 {
                     scene: 1,
                     step: 0,
                     done: false,
-                    naration: "Pada suatu hari hiduplah seorang raja monyet bernama Wanaraja. Ia bersama monyet lainnya tinggal di sebuah pohon ara raksasa yang berada di tepi sungai.",
-                    img: ""
+                    naration: "Di sebuah hutan, hiduplah sekelompok monyet yang dipimpin oleh Wanaraja, si raja monyet. Mereka tinggal di dekat pohon ara raksasa yang banyak buahnya. Para monyet amat menyukai buah ara itu.",
+                    img: "assets/img/scene-1.jpg"
                 },
                 {
                     scene: 2,
                     step: 0,
                     done: false,
-                    naration: "Suatu ketika, salah satu buah ara hanyut terbawa arus sungai. Buah itu tersangkut di jala dan aromanya yang kuat menarik perhatian orang-orang di sekitar sungai.",
-                    img: ""
+                    naration: "Namun, ada satu buah ara yang luput dari perhatian mereka. Buah itu pun jatuh dan hanyut ke sungai. Buah itu lalu tersangkut di jala milik manusia. Aromanya yang harum membuat orang-orang tertarik.",
+                    img: "assets/img/scene-2-bg-1.jpg"
                 },
                 {
                     scene: 3,
                     step: 0,
                     done: false,
-                    naration: "Scene 3",
-                    img: ""
+                    naration: "Buah ara itu dipersembahkan pada Raja. Raja pun terpikat dengan aroma buah ara. Dia bergegas mencicipinya.",
+                    img: "assets/img/scene-3.jpg"
+                },
+                {
+                    scene: 4,
+                    step: 0,
+                    done: false,
+                    naration: "Raja lalu mengajak para pengawal untuk mencari pohon buah ara itu. Langkah mereka berderap memasuki hutan.",
+                    img: "assets/img/scene-4.jpg"
+                },
+                {
+                    scene: 5,
+                    step: 0,
+                    done: false,
+                    naration: "Sampai di tengah hutan.. Para monyet pun ketakutan. Mereka berlari dan meloncat tak tentu arah.",
+                    img: "assets/img/scene-5.jpg"
+                },
+                {
+                    scene: 6,
+                    step: 0,
+                    done: false,
+                    naration: "Melihat rakyatnya ketakutan, Wanaraja pun mencari akal. Dia mengikatkan sebatang bambu pada kakinya. Dia meminta para monyet untuk menyelamatkan diri lewat bambu itu.",
+                    img: "assets/img/scene-6.jpg"
+                },
+                {
+                    scene: 7,
+                    step: 0,
+                    done: false,
+                    naration: "Wanaraja tak kuat. Dia terjatuh. Namun dia lega, rakyatnya sudah berhasil melarikan diri.",
+                    img: "assets/img/scene-7.jpg"
+                },
+                {
+                    scene: 8,
+                    step: 0,
+                    done: false,
+                    naration: "Raja terharu mendengar penjelasan Wanaraja. Apalagi, Wanaraja bilang bahwa pohon ara itu adalah sumber makanan mereka.",
+                    img: "assets/img/scene-8.jpg"
+                },
+                {
+                    scene: 9,
+                    step: 0,
+                    done: false,
+                    naration: "Raja memutuskan untuk membiarkan para monyet kembali ke pohon itu. Dia dan Wanaraja sepakat untuk berbagi buah ara di kemudian hari.",
+                    img: "assets/img/scene-8.jpg"
+                }
+            ],
+            audioAssets: [
+                {
+                    type: "click",
+                    src: "assets/audio/Ambiance/Click UI.aac",
+                    id: "click"
+                },
+                {
+                    type: "ambiance",
+                    src: "assets/audio/Ambiance/Hutan dan Pasukan.aac",
+                    id: "pasukan"
+                },
+                {
+                    type: "ambiance",
+                    src: "assets/audio/Ambiance/Monkey Forest di serang.aac",
+                    id: "serang"
+                },
+                {
+                    type: "ambiance",
+                    src: "assets/audio/Ambiance/Monkey Forest.aac",
+                    id: "monyet"
+                },
+                {
+                    type: "ambiance",
+                    src: "assets/audio/Ambiance/River Stream.aac",
+                    id: "sungai"
+                },
+                {
+                    type: "ambiance",
+                    src: "assets/audio/Ambiance/Forest.aac",
+                    id: "forest"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 1.aac",
+                    id: "narator0"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 2.aac",
+                    id: "narator1"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 3.aac",
+                    id: "narator2"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 4.aac",
+                    id: "narator3"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 5.aac",
+                    id: "narator4"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 6 Part 1.aac",
+                    id: "narator5"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 7.aac",
+                    id: "narator6"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 8 Part 1.aac",
+                    id: "narator7"
+                },
+                {
+                    type: "narator",
+                    src: "assets/audio/VO Narator/Narator Slide 8 Part 2.aac",
+                    id: "narator8"
+                },
+
+                {
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Monyet Slide 1 Part 1.aac",
+                    id: "karakter0"
+                },
+                {
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Monyet Slide 1 Part 4.aac",
+                    id: "karakter1"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Monyet Slide 1 Part 2.aac",
+                    id: "karakter2"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Monyet Slide 1 Part 3.aac",
+                    id: "karakter3"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Pelayan Slide 3.aac",
+                    id: "karakter5"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Raja 2 Slide 3.aac",
+                    id: "karakter6"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Prajurit 1 Slide 5.aac",
+                    id: "karakter7"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Prajurit 2 Slide 5.aac",
+                    id: "karakter8"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Raja Monyet Slide 6.aac",
+                    id: "karakter9"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Raja Slide 7.aac",
+                    id: "karakter10"
+                },{
+                    type: "karakter",
+                    src: "assets/audio/VO Karakter/Raja Monyet Slide 7.aac",
+                    id: "karakter11"
                 }
             ]
         }
@@ -43,6 +210,8 @@ new Vue({
     watch: {
         gameIsStart() {
             if(this.gameIsStart) {
+                this.unMuteAllSound()
+                this.playAudioNaration('narator0')
                 const vm = this;
                 setTimeout(() => {
                     vm.gameStep[0].showButton1 = true
@@ -50,10 +219,50 @@ new Vue({
             }
         },
         activeScene() {
-            console.log(this.activeScene)
+            // console.log(this.activeScene)
+        },
+        soundIsOn() {
+            this.soundIsOn ? this.unMuteAllSound() : this.muteAllSound()
         }
     },
     methods: {
+        muteAllSound() {
+            for(const d in this.audioAssets) {
+                document.getElementsByClassName('audio')[d].muted = true
+            }
+        },
+        unMuteAllSound() {
+            for(const d in this.audioAssets) {
+                document.getElementsByClassName('audio')[d].muted = false
+            }
+        },
+        playClickAudio() {
+            document.getElementById('click').play()
+        },
+        playAudioNaration(id) {
+            for(let d=0; d < document.getElementsByClassName('karakter').length; d++) {
+                document.getElementsByClassName('karakter')[d].pause()
+                document.getElementsByClassName('karakter')[d].currentTime = 0
+            }
+            for(let f=0; f < document.getElementsByClassName('narator').length; f++) {
+                document.getElementsByClassName('narator')[f].pause()
+                document.getElementsByClassName('narator')[f].currentTime = 0
+            }
+            document.getElementById(id).play()
+        },
+        resetAmbience() {
+            for(let d=0; d < document.getElementsByClassName('ambiance').length; d++) {
+                document.getElementsByClassName('ambiance')[d].pause()
+                document.getElementsByClassName('ambiance')[d].currentTime = 0
+            }
+        },
+        playAmbience(id) {
+            for(let d=0; d < document.getElementsByClassName('ambiance').length; d++) {
+                document.getElementsByClassName('ambiance')[d].pause()
+                document.getElementsByClassName('ambiance')[d].currentTime = 0
+            }
+            document.getElementById(id).play()
+        },
         initSwiper() {
             const vm = this
             vm.swiper = new Swiper('.swiper', {
@@ -64,6 +273,46 @@ new Vue({
             vm.swiper.on('slideChangeTransitionEnd', () => {
                 vm.activeScene = vm.swiper.activeIndex
                 if(vm.activeScene == 1) vm.simulateScene2() // scene 2
+                if(vm.activeScene == 3) vm.allowSlide = true // scene 4
+                if(vm.activeScene == 7) vm.allowSlide = true // scene 8
+                if(vm.activeScene == 8) vm.allowSlide = true // scene 9
+
+                if(vm.activeScene == 0) {
+                    vm.playAudioNaration('narator0')
+                    vm.playAmbience('forest')
+                }
+                if(vm.activeScene == 1) { 
+                    vm.playAudioNaration('narator1')
+                    vm.playAmbience('sungai')
+                }
+                if(vm.activeScene == 2) {
+                    vm.playAudioNaration('narator2')
+                    vm.resetAmbience()
+                }
+                if(vm.activeScene == 3) { 
+                    vm.playAudioNaration('narator3')
+                    vm.playAmbience('pasukan')
+                }
+                if(vm.activeScene == 4) { 
+                    vm.playAudioNaration('narator4')
+                    vm.playAmbience('monyet')
+                }
+                if(vm.activeScene == 5) { 
+                    vm.playAudioNaration('narator5')
+                    vm.playAmbience('serang')
+                }
+                if(vm.activeScene == 6) {
+                    vm.playAudioNaration('narator6')
+                    vm.resetAmbience()
+                }
+                if(vm.activeScene == 7) {
+                    vm.playAudioNaration('narator7')
+                    vm.resetAmbience()
+                }
+                if(vm.activeScene == 8) {
+                    vm.playAudioNaration('narator8')
+                    vm.resetAmbience()
+                }
             });
         },
         slide(dir) {
@@ -71,6 +320,11 @@ new Vue({
             this.allowSlide = false
             this.resetScene()
             dir ? this.swiper.slideNext() : this.swiper.slidePrev()
+        },
+        slideTo(dir) {
+            this.allowSlide = false
+            this.resetScene()
+            this.swiper.slideTo(dir)
         },
         resetScene() {
             this.gameStep[this.activeScene].step = 0
@@ -94,7 +348,7 @@ new Vue({
                     vm.allowSlide = true
                 }
                 vm.gameStep[1].step++
-            }, 2800)
+            }, 2000)
         }
     },
     mounted() {
