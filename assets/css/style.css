@@ -1,6 +1,6 @@
 body, html {
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
 }
@@ -476,7 +476,6 @@ div {
 
 #error strong{
     color: #ffffff;
-    font-family: 'Sniglet', cursive;
     max-width: 380px;
     display: block;
     font-size: 20px;
