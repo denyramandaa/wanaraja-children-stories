@@ -249,9 +249,9 @@ new Vue({
         soundIsOn() {
             this.soundIsOn ? this.unMuteAllSound() : this.muteAllSound()
         },
-        isFullscreen() {
-            this.isFullscreen ? this.goFullScreen($("#app").get(0)) : this.unFullscreen()
-        }
+        // isFullscreen() {
+        //     this.isFullscreen ? this.goFullScreen($("#app").get(0)) : this.unFullscreen()
+        // }
     },
     methods: {
         goFullScreen(element) {
