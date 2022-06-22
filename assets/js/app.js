@@ -87,7 +87,7 @@ new Vue({
                     step: 0,
                     done: false,
                     naration: "Raja memutuskan untuk membiarkan para monyet kembali ke pohon itu. Dia dan Wanaraja sepakat untuk berbagi buah ara di kemudian hari.",
-                    img: "assets/img/scene-8.jpg",
+                    img: "assets/img/scene-9.jpg",
                     relief: null
                 },
                 {

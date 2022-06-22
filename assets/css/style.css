@@ -317,7 +317,7 @@ div {
 .scene__2--3 {
     background-image: url("../img/scene-2-bg-3.jpg");
 }
-.scene__3--bg {
+.scene__3--bg, .scene__6--bg, .scene__8--bg, .scene__9--bg, .scene__10--bg {
     background-image: url("../img/scene-3.jpg");
     background-size: cover;
     background-position: bottom;
@@ -413,15 +413,14 @@ div {
     top: 37%;
     left: 69%;
 }
-.scene__8--bg,  .scene__9--bg{
+.scene__8--bg {
     background-image: url("../img/scene-8.jpg");
-    background-size: cover;
-    background-position: bottom;
+}  
+.scene__9--bg{
+    background-image: url("../img/scene-9.jpg");
 }  
 .scene__10--bg{
     background-image: url("../img/tamat.jpg");
-    background-size: cover;
-    background-position: bottom;
 }
 
 .btnSlide {
@@ -604,6 +603,7 @@ div {
     .naration {
         width: 100%;
         bottom: 6px;
+        height: 32%;
     }
     .naration p {
         font-size: 14px;
