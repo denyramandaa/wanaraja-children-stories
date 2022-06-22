@@ -111,10 +111,18 @@
                                 <div class="full scene__9--bg"></div>
                             </div>
                         </div>
+                        <div class="swiper-slide">
+                            <div class="scene">
+                                <div class="full scene__10--bg"></div>
+                                <div class="cover__button cover__button--baca-end" @click="slideTo(0)">
+                                    <div class="cover__button--baca-inner-end"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="naration">
+                    <div class="naration" v-if="activeScene !== gameStep.length-1">
                         <div class="naration__inner">
-                            <p>{{ gameStep[activeScene].naration }}</p>
+                            <p>{{ gameStep[activeScene].naration }}<span v-if="gameStep[activeScene].relief" class="lihatrelief" @click="showRelief = true">Lihat Relief</span></p>
                             <div class="btnSlide btnSlide--prev" :class="{ 'allow' : allowSlide }" @click="slide(0)"></div>
                             <div class="btnSlide btnSlide--next" :class="{ 'allow' : allowSlide }" @click="slide(1)"></div>
                         </div>
@@ -136,16 +144,30 @@
                 <transition name="fade">
                     <div class="cover" v-if="!gameIsStart">
                         <div class="cover__inner">
-                            <div class="cover__button cover__button--baca" @click="gameIsStart = true"></div>
-                            <div class="cover__button cover__button--panduan"></div>
-                            <div class="cover__button cover__button--setting"></div>
+                            <div class="cover__button cover__button--baca" @click="gameIsStart = true">
+                                <div class="cover__button--baca-inner"></div>
+                            </div>
+                            <!-- <div class="cover__button cover__button--panduan"></div>
+                            <div class="cover__button cover__button--setting"></div> -->
                         </div>
                     </div>
                 </transition>
                 <div class="soundSetting" :class="{ 'off' : !soundIsOn }" @click="soundIsOn = !soundIsOn">
                     <img src="assets/img/button-sound-on.png" alt="icon sound">
                 </div>
+                <div class="relief" v-if="showRelief">
+                    <div class="relief--inner">
+                        <div class="relief--wrapper" v-if="gameStep[activeScene].relief">
+                            <div class="btnClose"><img src="assets/img/button-close.png" alt="close" @click="showRelief = false"></div>
+                            <img class="ref" :src="gameStep[activeScene].relief.src" :alt="gameStep[activeScene].relief.text">
+                            <p>{{ gameStep[activeScene].relief.text }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="fullscreenbutton" @click="isFullscreen = !isFullscreen">
+            <img src="assets/img/button-fullscreen.png" alt="fullscreen" :class="{ 'off' : isFullscreen }">
         </div>
         <div id="error" v-if="orientationError">
             <div class="error__caption">
@@ -157,6 +179,7 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.1.4/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0/dist/vue.js"></script>
     <script src="assets/js/app.js"></script>

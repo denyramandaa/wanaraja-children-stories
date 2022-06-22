@@ -9,69 +9,94 @@ new Vue({
             orientationError: false,
             navigationIsOpen: false,
             soundIsOn: true,
+            showRelief: false,
+            isFullscreen: false,
             gameStep: [
                 {
                     scene: 1,
                     step: 0,
                     done: false,
                     naration: "Di sebuah hutan, hiduplah sekelompok monyet yang dipimpin oleh Wanaraja, si raja monyet. Mereka tinggal di dekat pohon ara raksasa yang banyak buahnya. Para monyet amat menyukai buah ara itu.",
-                    img: "assets/img/scene-1.jpg"
+                    img: "assets/img/scene-1.jpg",
+                    relief: null
                 },
                 {
                     scene: 2,
                     step: 0,
                     done: false,
                     naration: "Namun, ada satu buah ara yang luput dari perhatian mereka. Buah itu pun jatuh dan hanyut ke sungai. Buah itu lalu tersangkut di jala milik manusia. Aromanya yang harum membuat orang-orang tertarik.",
-                    img: "assets/img/scene-2-bg-1.jpg"
+                    img: "assets/img/scene-2-bg-1.jpg",
+                    relief: null
                 },
                 {
                     scene: 3,
                     step: 0,
                     done: false,
                     naration: "Buah ara itu dipersembahkan pada Raja. Raja pun terpikat dengan aroma buah ara. Dia bergegas mencicipinya.",
-                    img: "assets/img/scene-3.jpg"
+                    img: "assets/img/scene-3.jpg",
+                    relief: {
+                        "text": "Relief Jataka No. 100",
+                        "src": "assets/img/relief-scene-3.jpg"
+                    }
                 },
                 {
                     scene: 4,
                     step: 0,
                     done: false,
                     naration: "Raja lalu mengajak para pengawal untuk mencari pohon buah ara itu. Langkah mereka berderap memasuki hutan.",
-                    img: "assets/img/scene-4.jpg"
+                    img: "assets/img/scene-4.jpg",
+                    relief: null
                 },
                 {
                     scene: 5,
                     step: 0,
                     done: false,
                     naration: "Sampai di tengah hutan.. Para monyet pun ketakutan. Mereka berlari dan meloncat tak tentu arah.",
-                    img: "assets/img/scene-5.jpg"
+                    img: "assets/img/scene-5.jpg",
+                    relief: null
                 },
                 {
                     scene: 6,
                     step: 0,
                     done: false,
                     naration: "Melihat rakyatnya ketakutan, Wanaraja pun mencari akal. Dia mengikatkan sebatang bambu pada kakinya. Dia meminta para monyet untuk menyelamatkan diri lewat bambu itu.",
-                    img: "assets/img/scene-6.jpg"
+                    img: "assets/img/scene-6.jpg",
+                    relief: {
+                        "text": "Relief Jataka No. 102",
+                        "src": "assets/img/relief-scene-6.jpg"
+                    }
                 },
                 {
                     scene: 7,
                     step: 0,
                     done: false,
                     naration: "Wanaraja tak kuat. Dia terjatuh. Namun dia lega, rakyatnya sudah berhasil melarikan diri.",
-                    img: "assets/img/scene-7.jpg"
+                    img: "assets/img/scene-7.jpg",
+                    relief: null
                 },
                 {
                     scene: 8,
                     step: 0,
                     done: false,
                     naration: "Raja terharu mendengar penjelasan Wanaraja. Apalagi, Wanaraja bilang bahwa pohon ara itu adalah sumber makanan mereka.",
-                    img: "assets/img/scene-8.jpg"
+                    img: "assets/img/scene-8.jpg",
+                    relief: null
                 },
                 {
                     scene: 9,
                     step: 0,
                     done: false,
                     naration: "Raja memutuskan untuk membiarkan para monyet kembali ke pohon itu. Dia dan Wanaraja sepakat untuk berbagi buah ara di kemudian hari.",
-                    img: "assets/img/scene-8.jpg"
+                    img: "assets/img/scene-8.jpg",
+                    relief: null
+                },
+                {
+                    scene: 10,
+                    step: 0,
+                    done: false,
+                    naration: "",
+                    img: "assets/img/tamat.jpg",
+                    relief: null
                 }
             ],
             audioAssets: [
@@ -223,9 +248,33 @@ new Vue({
         },
         soundIsOn() {
             this.soundIsOn ? this.unMuteAllSound() : this.muteAllSound()
+        },
+        isFullscreen() {
+            this.isFullscreen ? this.goFullScreen($("#app").get(0)) : this.unFullscreen()
         }
     },
     methods: {
+        goFullScreen(element) {
+            if(element.requestFullscreen)
+                element.requestFullscreen();
+            else if(element.mozRequestFullScreen)
+                element.mozRequestFullScreen();
+            else if(element.webkitRequestFullscreen)
+                element.webkitRequestFullscreen();
+            else if(element.msRequestFullscreen)
+                element.msRequestFullscreen();
+
+        },
+        unFullscreen() {
+            if(document.exitFullscreen)
+                document.exitFullscreen();
+            else if(document.mozCancelFullScreen)
+                document.mozCancelFullScreen();
+            else if(document.webkitExitFullscreen)
+                document.webkitExitFullscreen();
+            else if(document.msExitFullscreen)
+                document.msExitFullscreen();
+        },
         muteAllSound() {
             for(const d in this.audioAssets) {
                 document.getElementsByClassName('audio')[d].muted = true
@@ -248,19 +297,15 @@ new Vue({
                 document.getElementsByClassName('narator')[f].pause()
                 document.getElementsByClassName('narator')[f].currentTime = 0
             }
+            if(!id) return
             document.getElementById(id).play()
-        },
-        resetAmbience() {
-            for(let d=0; d < document.getElementsByClassName('ambiance').length; d++) {
-                document.getElementsByClassName('ambiance')[d].pause()
-                document.getElementsByClassName('ambiance')[d].currentTime = 0
-            }
         },
         playAmbience(id) {
             for(let d=0; d < document.getElementsByClassName('ambiance').length; d++) {
                 document.getElementsByClassName('ambiance')[d].pause()
                 document.getElementsByClassName('ambiance')[d].currentTime = 0
             }
+            if(!id) return
             document.getElementById(id).play()
         },
         initSwiper() {
@@ -287,7 +332,7 @@ new Vue({
                 }
                 if(vm.activeScene == 2) {
                     vm.playAudioNaration('narator2')
-                    vm.resetAmbience()
+                    vm.playAmbience()
                 }
                 if(vm.activeScene == 3) { 
                     vm.playAudioNaration('narator3')
@@ -303,15 +348,19 @@ new Vue({
                 }
                 if(vm.activeScene == 6) {
                     vm.playAudioNaration('narator6')
-                    vm.resetAmbience()
+                    vm.playAmbience()
                 }
                 if(vm.activeScene == 7) {
                     vm.playAudioNaration('narator7')
-                    vm.resetAmbience()
+                    vm.playAmbience()
                 }
                 if(vm.activeScene == 8) {
                     vm.playAudioNaration('narator8')
-                    vm.resetAmbience()
+                    vm.playAmbience()
+                }
+                if(vm.activeScene == 9) {
+                    vm.playAudioNaration()
+                    vm.playAmbience()
                 }
             });
         },
